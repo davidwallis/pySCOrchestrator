@@ -16,12 +16,12 @@ class orchestrator(object):
         if r.status_code == 201 or r.status_code == 200:
             return True, doc, output
         else:
-            return False, doc, output        
-        
+            return False, doc, output
+
     def Execute(self, runbook_id, params, dictionary=False):
         headers = {'Content-Type': 'application/atom+xml'}
         data = self.Build(runbook_id, params, dictionary=dictionary)
-        try: 
+        try:
             if data['status'] == 400: return data
         except: pass
         r = self.session.post(self.host + "/Jobs", data=data, headers=headers)
@@ -32,7 +32,7 @@ class orchestrator(object):
         output['result']['status'] = properties['d:Status']
         output['result']['CreationTime'] = properties['d:CreationTime']['#text']
         output['result']['LastModifiedTime'] = properties['d:LastModifiedTime']['#text']
-        return output            
+        return output
 
     def GetJobStatus(self, job_id):
         r = self.session.get(self.host + "/Jobs(guid'%s')" % job_id)
@@ -43,7 +43,7 @@ class orchestrator(object):
         output['result']['status'] = properties['d:Status']
         output['result']['CreationTime'] = properties['d:CreationTime']['#text']
         output['result']['LastModifiedTime'] = properties['d:LastModifiedTime']['#text']
-        return output               
+        return output
 
     def GetJobInstance(self,job_id):
         r = self.session.get(self.host + "/Jobs(guid'%s')/Instances" % job_id)
@@ -87,16 +87,16 @@ class orchestrator(object):
 
     def Build(self, runbook_id, params, dictionary=False):
         BASE = """<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-                 <entry xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
-                 <content type="application/xml">
-                 <m:properties>
-                 <d:RunbookId m:type="Edm.Guid">%s</d:RunbookId>
-                 <d:Parameters>
-                 <![CDATA[<Data>%s</Data>]]>
-                 </d:Parameters>
-                 </m:properties>
-                 </content>
-                 </entry>"""
+                    <entry xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
+                    <content type="application/xml">
+                    <m:properties>
+                    <d:RunbookId m:type="Edm.Guid">%s</d:RunbookId>
+                    <d:Parameters>
+                    <![CDATA[<Data>%s</Data>]]>
+                    </d:Parameters>
+                    </m:properties>
+                    </content>
+                    </entry>"""
         settings_array = []
         if dictionary == False:
             for setting_var in params:
