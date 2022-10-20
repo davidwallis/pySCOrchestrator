@@ -1,12 +1,12 @@
 from distutils.core import setup
 
 setup(
-    name='pyOrchestrator',
+    name='pySCOrchestrator',
     version='0.0.1',
     author='davidwallis',
     author_email='david@wallis2000.co.uk',
-    packages=['pyOrchestrator'],
-    url='https://github.com/davidwallis3101/pyOrchestrator',
+    packages=['pySCOrchestrator'],
+    url='https://github.com/davidwallis3101/pySCOrchestrator',
     license='Apache License',
     description='A simple client for calling System Center Orchestrator runbooks in python',
     long_description=open('README.rst').read(),

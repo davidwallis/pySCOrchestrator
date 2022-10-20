@@ -1,10 +1,10 @@
-pyOrchestrator
-==============
+pySCOrchestrator
+================
 
-forked from https://github.com/oznu/pyHyperV
+forked from https://github.com/oznu/pyHyperV due to the being readonly
 
-.. image:: https://img.shields.io/pypi/v/pyOrchestrator.svg
-        :target: https://pypi.python.org/pypi/pyOrchestrator/0.0.4
+.. image:: https://img.shields.io/pypi/v/pySCOrchestrator.svg
+        :target: https://pypi.python.org/pypi/pySCOrchestrator/0.0.4
 
 Simple client for calling System Center Orchestrator runbooks in python.
 
@@ -19,22 +19,22 @@ Installation
 
 Using pip::
 
-    $ pip install pyOrchestrator
+    $ pip install pySCOrchestrator
 
 
-==================================
-Import & Initialize pyOrchestrator
-==================================
+====================================
+Import & Initialize pySCOrchestrator
+====================================
 
 .. code:: python
 
-    import pyOrchestrator
+    import pySCOrchestrator
 
     orchestratorEndpoint = "http://hostname.local:81/Orchestrator2012/Orchestrator.svc"
     username = "domain\\username"
     password = "password"
 
-    o = pyOrchestrator.orchestrator(orchestratorEndpoint, username, password)
+    o = pySCOrchestrator.orchestrator(orchestratorEndpoint, username, password)
 
 
 ===============
@@ -43,7 +43,7 @@ Execute Runbook
 
 .. code:: python
 
-    pyOrchestrator.orchestrator.Execute(runbookID, runbookParameters, dictionary=False)
+    pySCOrchestrator.orchestrator.Execute(runbookID, runbookParameters, dictionary=False)
 
 
 You can send the parameters to orchestrator using the parameter ID or the parameter name.
@@ -58,10 +58,10 @@ Example of sending using the parameter ID:
     runbookID = '285f017e-bc97-4b03-a999-64e08065769e'
 
     runbookParameters = {
-         'f90e6468-31d3-4aa8-9d50-f8bf5bf689e2' : 'value',
-         'edb8d27d-38ad-4d29-a255-30d8360a3852' : 'value',
-         'b61abea1-4001-42fd-99b5-470acc5c1386' : 'value',
-         '32725695-0b25-47e0-abbe-b28e22eca8ad' : 'value',
+        'f90e6468-31d3-4aa8-9d50-f8bf5bf689e2' : 'value',
+        'edb8d27d-38ad-4d29-a255-30d8360a3852' : 'value',
+        'b61abea1-4001-42fd-99b5-470acc5c1386' : 'value',
+        '32725695-0b25-47e0-abbe-b28e22eca8ad' : 'value',
     }
 
     o.Execute(runbookID, runbookParameters)
@@ -78,10 +78,10 @@ Example:
     runbookID = '285f017e-bc97-4b03-a999-64e08065769e'
 
     runbookParameters = {
-         'HDD'  : '50gb',
-         'CPU'  : '2',
-         'RAM'  : '2048',
-         'OS'   : 'Server2012',
+        'HDD'  : '50gb',
+        'CPU'  : '2',
+        'RAM'  : '2048',
+        'OS'   : 'Server2012',
     }
 
     o.Execute(runbookID, runbookParameters, dictionary=True)
@@ -98,12 +98,12 @@ Example Response:
 
     {
     'status' : 201,
-      'result': {
-          'id'               : '3c87fd6c-69f5-41c9-bd55-ec2aa6ec7c64',
-          'status'           : 'pending',
-          'CreationTime'     : '2014-04-02T12:11:05.617',
-          'LastModifiedTime' : '2014-04-02T12:19:08.963',
-          }
+        'result': {
+            'id'               : '3c87fd6c-69f5-41c9-bd55-ec2aa6ec7c64',
+            'status'           : 'pending',
+            'CreationTime'     : '2014-04-02T12:11:05.617',
+            'LastModifiedTime' : '2014-04-02T12:19:08.963',
+            }
     }
 
 
@@ -113,8 +113,8 @@ Get Runbooks
 
 .. code:: python
 
-    pyOrchestrator.orchestrator.GetRunbooks()
-    pyOrchestrator.orchestrator.GetRunbookID(runbookName)
+    pySCOrchestrator.orchestrator.GetRunbooks()
+    pySCOrchestrator.orchestrator.GetRunbookID(runbookName)
 
 Returns a list of runbooks and their IDs from orchestrator.
 
@@ -151,7 +151,7 @@ Get Runbook Parameters
 
 .. code:: python
 
-    pyOrchestrator.orchestrator.GetParameters(runbookID)
+    pySCOrchestrator.orchestrator.GetParameters(runbookID)
 
 This function returns the parameter names and paramater IDs required by the runbook specified.
 
@@ -170,11 +170,11 @@ Example Response:
     {
     'status' : 200,
       'result': {
-          'HDD' : 'f90e6468-31d3-4aa8-9d50-f8bf5bf689e2',
-          'CPU' : 'edb8d27d-38ad-4d29-a255-30d8360a3852',
-          'RAM' : 'b61abea1-4001-42fd-99b5-470acc5c1386',
-          'OS'  : '32725695-0b25-47e0-abbe-b28e22eca8ad',
-          }
+        'HDD' : 'f90e6468-31d3-4aa8-9d50-f8bf5bf689e2',
+        'CPU' : 'edb8d27d-38ad-4d29-a255-30d8360a3852',
+        'RAM' : 'b61abea1-4001-42fd-99b5-470acc5c1386',
+        'OS'  : '32725695-0b25-47e0-abbe-b28e22eca8ad',
+        }
     }
 
 
@@ -184,7 +184,7 @@ Get Job Status
 
 .. code:: python
 
-    pyOrchestrator.orchestrator.GetJobStatus(jobID)
+    pySCOrchestrator.orchestrator.GetJobStatus(jobID)
 
 
 This function allows you to check the status of an orchestrator job/task.
@@ -203,12 +203,12 @@ Example Response:
 
     {
     'status' : 200,
-      'result': {
-          'id'               : '3c87fd6c-69f5-41c9-bd55-ec2aa6ec7c64',
-          'status'           : 'Complete',
-          'CreationTime'     : '2014-04-02T12:11:05.617',
-          'LastModifiedTime' : '2014-04-02T12:19:08.963',
-          }
+        'result': {
+            'id'               : '3c87fd6c-69f5-41c9-bd55-ec2aa6ec7c64',
+            'status'           : 'Complete',
+            'CreationTime'     : '2014-04-02T12:11:05.617',
+            'LastModifiedTime' : '2014-04-02T12:19:08.963',
+            }
     }
 
 ===================
@@ -217,7 +217,7 @@ Get Job Instance ID
 
 .. code:: python
 
-    pyOrchestrator.orchestrator.GetJobInstance(jobID)
+    pySCOrchestrator.orchestrator.GetJobInstance(jobID)
 
 Returns the job instance ID. This ID can then be used in other functions such as GetInstanceParameters.
 
@@ -238,7 +238,7 @@ Get Instance Parameters
 
 .. code:: python
 
-    pyOrchestrator.orchestrator.GetInstanceParameters(instanceID)
+    pySCOrchestrator.orchestrator.GetInstanceParameters(instanceID)
 
 
 Returns the instance parameters from orchestrator. This function can be used to get data returned from orchestrator.
