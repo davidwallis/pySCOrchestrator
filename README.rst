@@ -1,11 +1,12 @@
-pyHyperV
+pyOrchestrator
 ========
 
+forked from https://github.com/oznu/pyHyperV
 
-.. image:: https://img.shields.io/pypi/v/pyHyperV.svg
-        :target: https://pypi.python.org/pypi/pyHyperV/0.0.4
+.. image:: https://img.shields.io/pypi/v/pyOrchestrator.svg
+        :target: https://pypi.python.org/pypi/pyOrchestrator/0.0.4
 
-Simple client for calling HyperV orchestrator runbooks in python.
+Simple client for calling System Center Orchestrator runbooks in python.
 
 .. contents::
     :local:
@@ -18,22 +19,22 @@ Installation
 
 Using pip::
 
-    $ pip install pyHyperV
+    $ pip install pyOrchestrator
     
     
 ============================
-Import & Initialize pyHyperV
+Import & Initialize pyOrchestrator
 ============================
 
 .. code:: python
 
-    import pyHyperV
+    import pyOrchestrator
     
     orchestratorEndpoint = "http://hostname.local:81/Orchestrator2012/Orchestrator.svc"
     username = "domain\\username"
     password = "password"
     
-    o = pyHyperV.orchestrator(orchestratorEndpoint, username, password)
+    o = pyOrchestrator.orchestrator(orchestratorEndpoint, username, password)
     
 
 ===============
@@ -42,7 +43,7 @@ Execute Runbook
 
 .. code:: python
 
-    pyHyperV.orchestrator.Execute(runbookID, runbookParameters, dictionary=False)
+    pyOrchestrator.orchestrator.Execute(runbookID, runbookParameters, dictionary=False)
 
 
 You can send the parameters to orchestrator using the parameter ID or the parameter name.
@@ -112,8 +113,8 @@ Get Runbooks
 
 .. code:: python
 
-    pyHyperV.orchestrator.GetRunbooks()
-    pyHyperV.orchestrator.GetRunbookID(runbookName)
+    pyOrchestrator.orchestrator.GetRunbooks()
+    pyOrchestrator.orchestrator.GetRunbookID(runbookName)
     
 Returns a list of runbooks and their IDs from orchestrator.
 
@@ -150,7 +151,7 @@ Get Runbook Parameters
 
 .. code:: python
 
-    pyHyperV.orchestrator.GetParameters(runbookID)
+    pyOrchestrator.orchestrator.GetParameters(runbookID)
     
 This function returns the parameter names and paramater IDs required by the runbook specified.
 
@@ -183,7 +184,7 @@ Get Job Status
 
 .. code:: python
 
-    pyHyperV.orchestrator.GetJobStatus(jobID)
+    pyOrchestrator.orchestrator.GetJobStatus(jobID)
     
     
 This function allows you to check the status of an orchestrator job/task.
@@ -216,7 +217,7 @@ Get Job Instance ID
 
 .. code:: python
 
-    pyHyperV.orchestrator.GetJobInstance(jobID)
+    pyOrchestrator.orchestrator.GetJobInstance(jobID)
     
 Returns the job instance ID. This ID can then be used in other functions such as GetInstanceParameters.
 
@@ -237,7 +238,7 @@ Get Instance Parameters
 
 .. code:: python
 
-    pyHyperV.orchestrator.GetInstanceParameters(instanceID)
+    pyOrchestrator.orchestrator.GetInstanceParameters(instanceID)
     
     
 Returns the instance parameters from orchestrator. This function can be used to get data returned from orchestrator.
