@@ -1,7 +1,8 @@
 pySCOrchestrator
 ================
 
-forked from https://github.com/oznu/pyHyperV due to the being readonly
+This module is forked from https://github.com/oznu/pyHyperV due to the original being readonly
+and me wanting somewhere changes could be pushed for maintaining this for use for some backwards compatibility.
 
 .. image:: https://img.shields.io/pypi/v/pySCOrchestrator.svg
         :target: https://pypi.python.org/pypi/pySCOrchestrator/0.0.4
