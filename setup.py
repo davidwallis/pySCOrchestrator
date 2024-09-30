@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='pySCOrchestrator',
-    version='0.0.2',
+    version='0.0.3',
     author='davidwallis',
     author_email='david@wallis2000.co.uk',
     packages=['pySCOrchestrator'],
